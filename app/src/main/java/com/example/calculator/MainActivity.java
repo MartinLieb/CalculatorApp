@@ -1,5 +1,6 @@
 package com.example.calculator;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,10 +15,21 @@ public class MainActivity extends AppCompatActivity {
     private EditText resultat;
     private Button button;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Button btn = (Button) findViewById(R.id.btn);
+
+        btn.setOnClickListener(new View.OnClickListener() {
+                                   @Override
+                                   public void onClick(View v) {
+                                       startActivity(new Intent(MainActivity.this, SecondActivity.class));
+                                   }
+                            });
 
         a = findViewById(R.id.aTextView);
         b = findViewById(R.id.bTextView);
@@ -28,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // your handler code here
                 // TODO træk a og b ud fra edittext
+
                 String aStringVal  = (a.getText().toString());
                 int aIntVal = Integer.parseInt(aStringVal);
                 String bStringVal  = (b.getText().toString());
